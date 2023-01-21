@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors')
+var bodyParser = require('body-parser')
 const jwt = require('jsonwebtoken');
 require('dotenv').config()
 const { MongoClient, ServerApiVersion } = require('mongodb');
@@ -9,6 +10,8 @@ const port = process.env.PORT || 5000
 
 app.use(cors())
 app.use(express.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.p7yun4g.mongodb.net/?retryWrites=true&w=majority`;
